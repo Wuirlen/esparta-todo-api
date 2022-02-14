@@ -13,7 +13,7 @@ const server = express();
 server.use(express.json());
 
 const corsOptions = {
-    origin: 'https://esparta-todo-api.herokuapp.com',
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinu: false,
     optionsSuccessStatus: 204
