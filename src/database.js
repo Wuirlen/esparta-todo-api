@@ -1,10 +1,11 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host: 'us-cdbr-east-05.cleardb.net',
-    user: 'b6235bafdb00a8',
-    password: '8c04e2bb',
-    database: 'heroku_a05e9b1d0d47589',
+    port: process.env.PORT,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
     typeCast: castField = (field, useDefaultTypeCasting) => {
 
         if ((field.type === 'BIT') && (field.length === 1)) {
@@ -21,5 +22,6 @@ connection.connect((error) => {
     if (error) throw error;
     console.log(`Conectado ao Banco de Dados: ${process.env.DB_NAME}`);
 });
+
 
 module.exports = connection;
