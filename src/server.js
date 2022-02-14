@@ -10,16 +10,15 @@ const routes = require('./routes');
 
 const server = express();
 
-// server.use(express.json());
+server.use(cors());
 
-const corsOptions = {
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinu: false,
-    optionsSuccessStatus: 204
-}
-
-server.use(cors(corsOptions));
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+    next();
+});
 
 server.use(bodyParser.urlencoded({ extended: false }));
 
