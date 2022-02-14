@@ -13,9 +13,12 @@ const server = express();
 server.use(express.json());
 
 const corsOptions = {
-    origin: '*'
-    // optionsSuccessStatus: 200 
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinu: false,
+    optionsSuccessStatus: 204
 }
+
 server.use(cors(corsOptions));
 
 server.use(bodyParser.urlencoded({ extended: false }));
