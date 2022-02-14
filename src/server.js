@@ -12,12 +12,15 @@ const server = express();
 
 server.use(express.json());
 
-server.use(cors());
+const corsOptions = {
+    origin: '*'
+    // optionsSuccessStatus: 200 
+}
+server.use(cors(corsOptions));
 
 server.use(bodyParser.urlencoded({ extended: false }));
 
 server.use('/api', routes);
-
 
 server.listen(process.env.PORT, () => {
     console.log(`Servidor rodando em: ${process.env.DB_HOST}:${process.env.PORT}`)
