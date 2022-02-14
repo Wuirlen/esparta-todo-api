@@ -10,20 +10,12 @@ const routes = require('./routes');
 
 const server = express();
 
-const whitelist = ['http://localhost:3000', 'https://esparta-todo-api.herokuapp.com'];
+server.use(cors({
+    origin: '*',
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    credentials: true
+}));
 
-const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error("Not allowed by CORS"))
-        }
-    },
-    credentials: true,
-}
-
-server.use(cors(corsOptions));
 server.use(express.json());
 
 server.use(bodyParser.urlencoded({ extended: false }));
