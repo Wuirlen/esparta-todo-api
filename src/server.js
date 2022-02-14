@@ -13,7 +13,7 @@ const server = express();
 server.use(express.json());
 
 const corsOptions = {
-    origin: '*',
+    origin: 'http://localhost:3000/',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinu: false,
     optionsSuccessStatus: 204
