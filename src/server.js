@@ -10,12 +10,6 @@ const routes = require('./routes');
 
 const server = express();
 
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'https://esparta-todo-api.herokuapp.com/');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
-
 server.use(express.json());
 
 server.use(cors());
