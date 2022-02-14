@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-let bd_setting = {
+const connection = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
@@ -15,28 +15,11 @@ let bd_setting = {
         return (useDefaultTypeCasting());
 
     }
-}
+});
 
-function handleDisconnect() {
-    connection = mysql.createConnection(bd_setting);
-
-    connection.connect((error) => {
-        if (error) throw error;
-        console.log(`Conectado ao Banco de Dados: ${process.env.DB_NAME}`);
-    });
-
-    connection.on('error', (error) => {
-        console.log('db error', error);
-        if (error.code === 'PROTOCOL_CONNECTION_LOST') {
-            handleDisconnect();
-        } else {
-            throw error;
-        }
-    });
-    
-}
-
-handleDisconnect();
-
+connection.connect((error) => {
+    if (error) throw error;
+    console.log(`Conectado ao Banco de Dados: ${process.env.DB_NAME}`);
+});
 
 module.exports = connection;
