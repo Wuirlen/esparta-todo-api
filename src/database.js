@@ -18,9 +18,15 @@ const connection = mysql.createPool({
     }
 });
 
-// connection.connect((error) => {
-//     if (error) throw error;
-//     console.log(`Conectado ao Banco de Dados: ${process.env.DB_NAME}`);
-// });
+connection.config = {
+
+}
+
+console.log()
+
+connection.getConnection((error) => {
+    if (error) throw error;
+    console.log(`Conectado ao Banco de Dados: ${process.env.DB_NAME}`);
+});
 
 module.exports = connection;
