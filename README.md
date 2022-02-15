@@ -3,6 +3,7 @@
 > A Rest Full API for to-do list (a sparta-io challenge)
 
 Preview
+
 ![preview](./src/img/preview.gif)
 
 ## 🔗 EndPoints
