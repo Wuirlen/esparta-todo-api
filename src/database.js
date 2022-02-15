@@ -23,12 +23,9 @@ connection.connect((error) => {
     console.log(`Conectado ao Banco de Dados: ${process.env.DB_NAME}`);
 });
 
-setInterval(() => {
-    connection.connect((error) => {
-        if (error) throw error;
-        console.log(`Conectado ao Banco de Dados: ${process.env.DB_NAME}`);
-    });
-}, 4000);
-
+connection.connect((error) => {
+    if (error) throw error;
+    console.log(`Conectado ao Banco de Dados: ${process.env.DB_NAME}`);
+});
 
 module.exports = connection;
