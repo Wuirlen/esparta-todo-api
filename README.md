@@ -1,6 +1,6 @@
 # esparta-todo-api
 
-> A Rest Full API for to-do list (a sparta-io challenge)
+> A RESTFul API for to-do list (a sparta-io challenge)
 
 Preview
 
